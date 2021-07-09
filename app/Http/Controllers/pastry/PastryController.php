@@ -21,7 +21,7 @@ class PastryController extends Controller
      */
     public function index()
     {
-        //
+        return view('pastry.index', ["pastries" => Pastry::all()]);
     }
 
     /**
@@ -42,7 +42,6 @@ class PastryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
 
         try{
             $pastry = new Pastry();
@@ -67,8 +66,8 @@ class PastryController extends Controller
                 $pastryImage->pastry_id = $pastry->id;
                 $pastryImage->status = 1;
                 $pastryImage->image_name = $img->getClientOriginalName();
-                $pastryImage->image_url = $imageUrls[0];
-                $pastryImage->saved_image_name = $imageUrls[1];
+                $pastryImage->image_url = $imageUrls["storage_path"];
+                $pastryImage->saved_image_name = $imageUrls["saved_image_name"];
                 $pastryImage->created_by = "admin";
 
                 $pastryImage->save();
@@ -83,6 +82,8 @@ class PastryController extends Controller
             Log::debug($e->getMessage());
             Log::debug($e->getTraceAsString());
         }
+
+        return redirect()->route('pastry.index');
     }
 
     /**

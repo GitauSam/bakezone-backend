@@ -8,7 +8,7 @@
                 <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Add Pastry</h1>
             </div>
         </div>
-        <form method="POST" action="{{ route('pastry.store') }}">
+        <form method="POST" action="{{ route('pastry.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="grid grid-cols-1 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Name</label>
@@ -71,7 +71,7 @@
                     </label>
                 </div>
             </div> -->
-
+            
             <div class="flex flex-col flex-wrap mx-auto py-8">
                 <main class="border-2 border-gray-300 rounded-md">
                     <!-- file upload modal -->
@@ -92,7 +92,7 @@
                                 <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
                                     <span>Drag and drop your</span>&nbsp;<span>files anywhere or</span>
                                 </p>
-                                <input id="hidden-input" type="file" multiple class="hidden" name="photos[]" />
+                                <input id="hidden-input" type="file" class="hidden" multiple name="photos[]" />
                                 <button id="button" class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
                                     Upload a file
                                 </button>

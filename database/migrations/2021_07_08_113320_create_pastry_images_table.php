@@ -20,6 +20,7 @@ class CreatePastryImagesTable extends Migration
             $table->string('image_name');
             $table->string('image_url');
             $table->string('saved_image_name');
+            $table->smallInteger('status')->default(0);
             $table->string('created_by');
             $table->string('modified_by')->default('admin');
             $table->string('deleted_by')->nullable();
